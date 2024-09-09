@@ -6,10 +6,6 @@
 
 #include "PlatformUnifiedInterface/platform.h"
 
-#if defined(__arm64e__) && __has_feature(ptrauth_calls)
-#include <ptrauth.h>
-#endif
-
 namespace features {
 
 template <typename T> inline T arm_thumb_fix_addr(T &addr) {

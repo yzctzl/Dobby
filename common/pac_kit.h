@@ -4,6 +4,7 @@
 #include <sys/types.h>
 #include <stddef.h>
 
+#if defined(__APPLE__)
 #if defined(__arm64e__) || __has_feature(ptrauth_calls)
 #include <ptrauth.h>
 #endif
@@ -43,3 +44,16 @@ template <typename T> static inline T pac_strip_and_sign(T &addr) {
   pac_sign(addr);
   return addr;
 }
+#else
+template <typename T> static inline T pac_strip(T &addr, bool keep = false) {
+  return addr;
+}
+
+template <typename T> static inline T pac_sign(T &addr, bool keep = false) {
+  return addr;
+}
+
+template <typename T> static inline T pac_strip_and_sign(T &addr) {
+  return addr;
+}
+#endif
