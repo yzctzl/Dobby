@@ -65,8 +65,8 @@ static void get_syms(ElfW(Ehdr) * header, ElfW(Sym) * *symtab_ptr, char **strtab
   }
 }
 
-int elf_ctx_init(elf_ctx_t *ctx, void *header_) {
-  ElfW(Ehdr) *ehdr = (ElfW(Ehdr) *)header_;
+int elf_ctx_init(elf_ctx_t *ctx, void *header) {
+  ElfW(Ehdr) *ehdr = (ElfW(Ehdr) *)header;
   ctx->header = ehdr;
 
   ElfW(Addr) ehdr_addr = (ElfW(Addr))ehdr;
