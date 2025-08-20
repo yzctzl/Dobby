@@ -180,6 +180,7 @@ if __name__ == "__main__":
   parser = argparse.ArgumentParser()
   parser.add_argument("--platform", type=str, required=True)
   parser.add_argument("--arch", type=str, required=True)
+  parser.add_argument("--debug", action='store_true')
   parser.add_argument("--library_build_type", type=str, default="static")
   parser.add_argument("--android_ndk_dir", type=str)
   parser.add_argument("--cmake_dir", type=str)
@@ -191,6 +192,7 @@ if __name__ == "__main__":
   platform = args.platform
   arch = args.arch
   library_build_type = args.library_build_type
+  PlatformBuilder.cmake_build_type = "Debug" if args.debug else "Release"
 
   PlatformBuilder.cmake_dir = args.cmake_dir
   PlatformBuilder.llvm_dir = args.llvm_dir

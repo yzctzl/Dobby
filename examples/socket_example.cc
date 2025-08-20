@@ -140,7 +140,7 @@ uint64_t socket_demo_server(void *ctx) {
   int opt = 1;
   int addrlen = sizeof(address);
   char buffer[1024] = {0};
-  char *hello = "Hello from server";
+  const char *hello = "Hello from server";
 
   if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
     ERROR_LOG("socket failed: %s", strerror(errno));
@@ -180,7 +180,7 @@ uint64_t socket_demo_server(void *ctx) {
 uint64_t socket_demo_client(void *ctx) {
   int sock = 0;
   struct sockaddr_in serv_addr;
-  char *hello = "Hello from client";
+  const char *hello = "Hello from client";
   char buffer[1024] = {0};
   if ((sock = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
     ERROR_LOG("socket failed");
