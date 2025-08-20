@@ -1,7 +1,4 @@
 import os
-import pipes
-import re
-import shutil
 import subprocess
 import sys
 import logging
@@ -89,7 +86,7 @@ class WindowsPlatformBuilder(PlatformBuilder):
     else:
       self.output_name = "libdobby.lib"
 
-    triples = {
+    triples = {  # noqa: F841
       "x86": "i686-pc-windows-msvc",
       "x64": "x86_64-pc-windows-msvc",
       # "arm": "arm-pc-windows-msvc",
@@ -110,7 +107,7 @@ class LinuxPlatformBuilder(PlatformBuilder):
     self.shared_output_name = "libdobby.so"
     self.static_output_name = "libdobby.a"
 
-    targets = {
+    targets = {  # noqa: F841
       "x86": "i686-linux-gnu",
       "x86_64": "x86_64-linux-gnu",
       "arm": "arm-linux-gnueabi",
