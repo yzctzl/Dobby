@@ -93,8 +93,8 @@ struct Interceptor {
   }
 };
 
-inline static Interceptor gInterceptor;
 
 inline Interceptor *Interceptor::Shared() {
+  static Interceptor gInterceptor;
   return &gInterceptor;
 }

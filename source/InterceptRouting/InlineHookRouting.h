@@ -40,7 +40,7 @@ PUBLIC inline int DobbyHook(void *address, void *fake_func, void **out_origin_fu
 
   DEBUG_LOG("----- [DobbyHook: %p] -----", address);
 
-  auto entry = gInterceptor.find((addr_t)address);
+  auto entry = Interceptor::Shared()->find((addr_t)address);
   if (entry) {
     ERROR_LOG("%p already been hooked.", address);
     return -1;
@@ -64,7 +64,7 @@ PUBLIC inline int DobbyHook(void *address, void *fake_func, void **out_origin_fu
     features::apple::arm64e_pac_strip_and_sign(*out_origin_func);
   }
 
-  gInterceptor.add(entry);
+  Interceptor::Shared()->add(entry);
 
   return 0;
 }

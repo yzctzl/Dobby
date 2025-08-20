@@ -25,9 +25,9 @@ PUBLIC int DobbyDestroy(void *address) {
   features::arm_thumb_fix_addr(address);
   features::apple::arm64e_pac_strip(address);
 
-  auto entry = gInterceptor.find((addr_t)address);
+  auto entry = Interceptor::Shared()->find((addr_t)address);
   if (entry) {
-    gInterceptor.remove((addr_t)address);
+    Interceptor::Shared()->remove((addr_t)address);
     entry->restore_orig_code();
     // FIXME: delete entry safely
     // delete entry;

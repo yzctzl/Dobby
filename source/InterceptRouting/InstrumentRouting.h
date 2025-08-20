@@ -50,7 +50,7 @@ PUBLIC inline int DobbyInstrument(void *address, dobby_instrument_callback_t pre
 
   DEBUG_LOG("----- [DobbyInstrument: %p] -----", address);
 
-  auto entry = gInterceptor.find((addr_t)address);
+  auto entry = Interceptor::Shared()->find((addr_t)address);
   if (entry) {
     ERROR_LOG("%s already been instrumented.", address);
     return -1;
@@ -69,7 +69,7 @@ PUBLIC inline int DobbyInstrument(void *address, dobby_instrument_callback_t pre
     return -1;
   }
 
-  gInterceptor.add(entry);
+  Interceptor::Shared()->add(entry);
 
   return 0;
 }
